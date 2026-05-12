@@ -50,12 +50,12 @@ for link in soup.select("a[href]"):
 
         if any(location.lower() in page_text.lower() for location in allowed_locations):
 
-        full_link = f"https://jobs.apple.com{href}"
+            full_link = f"https://jobs.apple.com{href}"
 
-        job_data = {
-            "title": title,
-            "link": full_link
-        }
+            job_data = {
+                "title": title,
+                "link": full_link
+            }
 
         if job_data not in previous_jobs:
             jobs_found.append(job_data)
