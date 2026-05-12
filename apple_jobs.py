@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://jobs.apple.com/en-us/search?search=product%20manager"
+URL = "https://jobs.apple.com/en-us/search"
 
 headers = {
     "User-Agent": "Mozilla/5.0"
@@ -15,7 +15,7 @@ soup = BeautifulSoup(response.text, "html.parser")
 
 jobs_found = []
 
-for link in soup.find_all("a", href=True):
+for link in soup.select("a[href]"):
 
     title = link.get_text(strip=True)
     href = link["href"]
