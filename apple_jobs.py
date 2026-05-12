@@ -40,11 +40,11 @@ for link in soup.select("a[href]"):
 
     if any(keyword.lower() in title.lower() for keyword in keywords):
         allowed_locations = [
-        "Austin",
-        "Texas",
-        "Remote",
-        "United States"
-    ]
+            "Austin",
+            "Texas",
+            "Remote",
+            "United States"
+        ]
 
     page_text = soup.get_text()
 
