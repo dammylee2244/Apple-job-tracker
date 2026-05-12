@@ -39,7 +39,7 @@ for link in soup.select("a[href]"):
     ]
 
     if any(keyword.lower() in title.lower() for keyword in keywords):
-            allowed_locations = [
+        allowed_locations = [
         "Austin",
         "Texas",
         "Remote",
