@@ -46,9 +46,9 @@ for link in soup.select("a[href]"):
             "United States"
         ]
 
-    page_text = soup.get_text()
+        page_text = soup.get_text()
 
-    if any(location.lower() in page_text.lower() for location in allowed_locations):
+        if any(location.lower() in page_text.lower() for location in allowed_locations):
 
         full_link = f"https://jobs.apple.com{href}"
 
