@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import json
+import os
 
 URL = "https://jobs.apple.com/en-us/search"
 
@@ -14,6 +16,11 @@ print("Status Code:", response.status_code)
 soup = BeautifulSoup(response.text, "html.parser")
 
 jobs_found = []
+previous_jobs = []
+
+if os.path.exists("jobs.json"):
+    with open("jobs.json", "r") as file:
+        previous_jobs = json.load(file)
 
 for link in soup.select("a[href]"):
 
@@ -50,7 +57,7 @@ for link in soup.select("a[href]"):
             "link": full_link
         }
 
-        if job_data not in jobs_found:
+        if job_data not in previous_jobs:
             jobs_found.append(job_data)
 
 print("\nAPPLE JOB RESULTS\n")
@@ -59,3 +66,6 @@ for job in jobs_found:
     print(f"🍎 TITLE: {job['title']}")
     print(f"🔗 LINK: {job['link']}")
     print("-" * 50)
+
+with open("jobs.json", "w") as file:
+    json.dump(jobs_found, file, indent=4)
