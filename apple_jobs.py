@@ -1,21 +1,49 @@
 import requests
 from bs4 import BeautifulSoup
-import json
-import os
 
 URL = "https://jobs.apple.com/en-us/search?search=product%20manager"
 
-response = requests.get(URL)
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+response = requests.get(URL, headers=headers)
+
+print("Status Code:", response.status_code)
+
 soup = BeautifulSoup(response.text, "html.parser")
 
-jobs = []
+jobs_found = []
 
-for link in soup.find_all("a"):
-    text = link.get_text(strip=True)
+for link in soup.find_all("a", href=True):
 
-    if "Product" in text or "Program" in text:
-        jobs.append(text)
+    title = link.get_text(strip=True)
+    href = link["href"]
 
-print("Found Jobs:")
-for job in jobs:
-    print(job)
+    keywords = [
+        "Product Manager",
+        "Program Manager",
+        "Technical Program Manager",
+        "Fraud",
+        "Risk",
+        "Payments"
+    ]
+
+    if any(keyword.lower() in title.lower() for keyword in keywords):
+
+        full_link = f"https://jobs.apple.com{href}"
+
+        job_data = {
+            "title": title,
+            "link": full_link
+        }
+
+        if job_data not in jobs_found:
+            jobs_found.append(job_data)
+
+print("\nAPPLE JOB RESULTS\n")
+
+for job in jobs_found:
+    print(f"TITLE: {job['title']}")
+    print(f"LINK: {job['link']}")
+    print("-" * 50)
