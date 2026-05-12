@@ -25,11 +25,23 @@ for link in soup.select("a[href]"):
         "Program Manager",
         "Technical Program Manager",
         "Fraud",
+        "TPM",
+        "WPC",
         "Risk",
         "Payments"
     ]
 
     if any(keyword.lower() in title.lower() for keyword in keywords):
+            allowed_locations = [
+        "Austin",
+        "Texas",
+        "Remote",
+        "United States"
+    ]
+
+    page_text = soup.get_text()
+
+    if any(location.lower() in page_text.lower() for location in allowed_locations):
 
         full_link = f"https://jobs.apple.com{href}"
 
@@ -44,6 +56,6 @@ for link in soup.select("a[href]"):
 print("\nAPPLE JOB RESULTS\n")
 
 for job in jobs_found:
-    print(f"TITLE: {job['title']}")
-    print(f"LINK: {job['link']}")
+    print(f"🍎 TITLE: {job['title']}")
+    print(f"🔗 LINK: {job['link']}")
     print("-" * 50)
