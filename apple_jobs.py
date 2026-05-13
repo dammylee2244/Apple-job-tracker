@@ -16,11 +16,12 @@ print("Status Code:", response.status_code)
 soup = BeautifulSoup(response.text, "html.parser")
 
 jobs_found = []
-previous_jobs = []
 
 if os.path.exists("jobs.json"):
     with open("jobs.json", "r") as file:
         previous_jobs = json.load(file)
+else:
+    previous_jobs = []
 
 for link in soup.select("a[href]"):
 
