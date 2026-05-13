@@ -23,6 +23,14 @@ jobs:
 
       - name: Run Script
         run: python apple_jobs.py
+      - name: Run PayPal Tracker
+        run: python paypal_jobs.py
+
+      - name: Run Stripe Tracker
+        run: python stripe_jobs.py
+
+      - name: Run Google Tracker
+        run: python google_jobs.py
 
       - name: Send Email
         uses: dawidd6/action-send-mail@v3
