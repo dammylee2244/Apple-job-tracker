@@ -60,7 +60,10 @@ for link in soup.select("a[href]"):
 
         if job_data not in previous_jobs:
             jobs_found.append(job_data)
-
+            print("NEW JOB FOUND:", title)
+if len(jobs_found) == 0:
+    print("No new jobs found today.")
+    
 print("\nAPPLE JOB RESULTS\n")
 
 for job in jobs_found:
