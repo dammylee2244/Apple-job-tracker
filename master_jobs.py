@@ -7,7 +7,8 @@ URLS = [
     "https://jobs.apple.com/en-us/search?location=austin-AST",
     "https://paypal.eightfold.ai/careers?query=Product%20Manager",
     "https://stripe.com/jobs/search",
-    "https://www.amazon.jobs/en/search"
+    "https://www.amazon.jobs/en/search",
+    "https://www.google.com/about/careers/applications/jobs/results/"
     
 ]
 
