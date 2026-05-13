@@ -6,6 +6,7 @@ import os
 URLS = [
     "https://jobs.apple.com/en-us/search?location=austin-AST",
     "https://paypal.eightfold.ai/careers?query=Product%20Manager",
+    "https://stripe.com/jobs/search",
     
 ]
 
