@@ -44,6 +44,8 @@ for link in soup.select("a[href]"):
             "Austin,TX",
             "Austin,Texas",
             "Austin",
+            "Atlanta",
+            "Atlanta,GA"
             "Remote"
         
         ]
