@@ -61,8 +61,8 @@ for link in soup.select("a[href]"):
                 "link": full_link
             }
 
-        if job_data not in previous_jobs:
-            jobs_found.append(job_data)
+            if job_data not in previous_jobs:
+                jobs_found.append(job_data)
             print("NEW JOB FOUND:", title)
 if len(jobs_found) == 0:
     print("No new jobs found today.")
